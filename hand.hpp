@@ -1,15 +1,26 @@
 #ifndef HAND_HPP
 #define HAND_HPP
 
-#include <vector>
 #include "card.hpp"
+// node struct
+struct CardNode {
+    Card card;
+    CardNode* next;
 
-class Hand{
+    CardNode(Card c) : card(c), next(nullptr) {}
+};
+
+class Hand {
 private:
-    std::vector<Card> cards;
+    CardNode* head;
+    int numCards;
+
+    void clear();
 
 public:
     Hand();
+    Hand(const Hand& other);
+    Hand& operator=(const Hand& other);
     ~Hand();
 
     void addCard(const Card& c); // add a card to players hand
