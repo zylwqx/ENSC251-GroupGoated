@@ -4,12 +4,12 @@
 #include "deck.hpp"
 #include "player.hpp"
 
-class game {
+class Game {
 private:
-    deck drawpile; // face down pile to draw from
-    deck discardpile; // face up pile to play cards on
+    Deck drawpile; // face down pile to draw from
+    Deck discardpile; // face up pile to play cards on
     
-    player players[4]; // store up to 4 players
+    Player players[4]; // store up to 4 players
     int numplayers; // actual number of players (so not all 4 need to be used)
     
     int currentplayerindex; // index of turns (p1 = 1, p2 = 2, etc.)
@@ -18,12 +18,12 @@ private:
     void reshufflediscardintodraw();// discard back to draw pile
 
 public:
-    game();
+    Game();
     bool setupgame(const std::string names[], int count);
-    player& getcurrentplayer();
-    const player& getcurrentplayer() const;
+    Player& getcurrentplayer();
+    const Player& getcurrentplayer() const;
     
-    card gettopdiscard() const;
+    Card gettopdiscard() const;
     
     int getactivesuit() const;
     int getnumplayers() const;
@@ -31,7 +31,7 @@ public:
     bool drawcardforcurrentplayer();   
     void nextturn();
     bool isgameover() const;
-    const player* getwinner() const;
+    const Player* getwinner() const;
 };
 
 #endif
